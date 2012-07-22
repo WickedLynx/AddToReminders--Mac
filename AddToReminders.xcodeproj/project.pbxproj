@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		593C4BBE15BC906E006DF520 /* AddToReminders.icns in Resources */ = {isa = PBXBuildFile; fileRef = 593C4BBD15BC906E006DF520 /* AddToReminders.icns */; };
 		59D1776015BBF09400B4C880 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D1775F15BBF09400B4C880 /* Cocoa.framework */; };
 		59D1776A15BBF09400B4C880 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59D1776815BBF09400B4C880 /* InfoPlist.strings */; };
 		59D1776C15BBF09400B4C880 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D1776B15BBF09400B4C880 /* main.m */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		593C4BBD15BC906E006DF520 /* AddToReminders.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AddToReminders.icns; sourceTree = "<group>"; };
 		59D1775B15BBF09400B4C880 /* AddToReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AddToReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D1775F15BBF09400B4C880 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		59D1776215BBF09400B4C880 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -52,6 +54,7 @@
 		59D1775015BBF09400B4C880 = {
 			isa = PBXGroup;
 			children = (
+				593C4BBD15BC906E006DF520 /* AddToReminders.icns */,
 				59D1777C15BBF0B200B4C880 /* CalendarStore.framework */,
 				59D1776515BBF09400B4C880 /* AddToReminders */,
 				59D1775E15BBF09400B4C880 /* Frameworks */,
@@ -164,6 +167,7 @@
 				59D1776A15BBF09400B4C880 /* InfoPlist.strings in Resources */,
 				59D1777015BBF09400B4C880 /* Credits.rtf in Resources */,
 				59D1777615BBF09400B4C880 /* MainMenu.xib in Resources */,
+				593C4BBE15BC906E006DF520 /* AddToReminders.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +267,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AddToReminders/AddToReminders-Prefix.pch";
 				INFOPLIST_FILE = "AddToReminders/AddToReminders-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -274,6 +279,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AddToReminders/AddToReminders-Prefix.pch";
 				INFOPLIST_FILE = "AddToReminders/AddToReminders-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -298,6 +304,7 @@
 				59D1777B15BBF09400B4C880 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
