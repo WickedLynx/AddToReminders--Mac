@@ -17,8 +17,14 @@
     // Insert code here to initialize your application
 }
 
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+    [self.window makeKeyAndOrderFront:self];
+}
+
+
+
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
-    return YES;
+    return NO;
 }
 
 @end

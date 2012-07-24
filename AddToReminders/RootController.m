@@ -140,9 +140,10 @@
     if (![sharedStore saveTask:newTask error:&error]) {
         NSAlert *alert = [NSAlert alertWithMessageText:@"Error while adding reminder" defaultButton:@"Dismiss" alternateButton:nil otherButton:nil informativeTextWithFormat:[NSString stringWithFormat:@"Please report this error to help me fix it: %@", error.localizedDescription]];
         [alert runModal];
+    } else {
+        [self.inputField setStringValue:@""];
+        [self.outputField setStringValue:@"Added to Reminders"];   
     }
-    
-    [[NSApplication sharedApplication] terminate:self];
 }
 
 - (void)textEditingChanged:(id)sender {
