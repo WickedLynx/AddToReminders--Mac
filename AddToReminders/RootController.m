@@ -7,7 +7,7 @@
 //
 
 #import "RootController.h"
-#import <CalendarStore/CalendarStore.h>
+#import <EventKit/EventKit.h>
 
 @implementation RootController
 
@@ -76,81 +76,61 @@
         return;
     }
     
-    CalCalendarStore *sharedStore = [CalCalendarStore defaultCalendarStore];
+    EKEventStore *anEventStore = [[EKEventStore alloc] initWithAccessToEntityTypes:EKEntityTypeReminder];
+    EKReminder *aReminder = [EKReminder reminderWithEventStore:anEventStore];
+    [aReminder setTitle:_reminderTitle];
+    [aReminder setCalendar:[anEventStore defaultCalendarForNewReminders]];
+    if (_reminderDate && _reminderDate != nil) {
+        [aReminder setDueDateComponents:[[NSCalendar currentCalendar] components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:_reminderDate]];
+        
+        NSInteger selectedIndex = self.alarmMatrix.selectedColumn;
+        switch (selectedIndex) {
+            case 1:
+                [aReminder addAlarm:[EKAlarm alarmWithAbsoluteDate:[_reminderDate dateByAddingTimeInterval:-(60 * 15)]]];
+                break;
+                
+            case 2:
+                [aReminder addAlarm:[EKAlarm alarmWithAbsoluteDate:[_reminderDate dateByAddingTimeInterval:-(60 * 30)]]];
+                
+            case 3:
+                [aReminder addAlarm:[EKAlarm alarmWithAbsoluteDate:[_reminderDate dateByAddingTimeInterval:-(3600)]]];
+                
+            case 4:
+                [aReminder addAlarm:[EKAlarm alarmWithAbsoluteDate:[_reminderDate dateByAddingTimeInterval:-(3600 * 24)]]];
+                
+            default:
+                break;
+        }
+        _reminderDate = nil;
+    }
     
-    CalTask *newTask = [CalTask task];
-    [newTask setTitle:_reminderTitle];
-    [newTask setDueDate:_reminderDate];
+    NSNumber *priorityNumber = nil;
     
     if ([_priority isEqualToString:@"High"]) {
-        [newTask setPriority:CalPriorityHigh];
+        priorityNumber = [NSNumber numberWithInt:1];
     } else if ([_priority isEqualToString:@"Medium"]) {
-        [newTask setPriority:CalPriorityMedium];
+        priorityNumber = [NSNumber numberWithInt:5];
     } else if ([_priority isEqualToString:@"Low"]) {
-        [newTask setPriority:CalPriorityLow];
+        priorityNumber = [NSNumber numberWithInt:9];
     } else {
-        [newTask setPriority:CalPriorityNone];
+        priorityNumber = [NSNumber numberWithInt:0];
     }
     
-    NSInteger selectedIndex = self.alarmMatrix.selectedColumn;
-    
-    CalAlarm *alarm = [CalAlarm alarm];
-    
-    switch (selectedIndex) {
-        case 0:
-            [newTask setAlarms:nil];
-            break;
-            
-        case 1: {
-            [alarm setAbsoluteTrigger:[_reminderDate dateByAddingTimeInterval:-(60 * 15)]];
-            [newTask setAlarms:[NSArray arrayWithObject:alarm]];
-            break;
-        }
-            
-        case 2: {
-            [alarm setAbsoluteTrigger:[_reminderDate dateByAddingTimeInterval:-(60 * 30)]];
-            [newTask setAlarms:[NSArray arrayWithObject:alarm]];
-            break;
-        }
-            
-        case 3: {
-            [alarm setAbsoluteTrigger:[_reminderDate dateByAddingTimeInterval:-(3600)]];
-            [newTask setAlarms:[NSArray arrayWithObject:alarm]];
-            break;
-        }
-            
-        case 4: {
-            [alarm setAbsoluteTrigger:[_reminderDate dateByAddingTimeInterval:-(3600 * 24)]];
-            [newTask setAlarms:[NSArray arrayWithObject:alarm]];
-            break;
-        }
-            
-        default:
-            break;
+    if ([aReminder respondsToSelector:@selector(setPriorityNumber:)]) {
+        [aReminder performSelector:@selector(setPriorityNumber:) withObject:priorityNumber];
     }
     
-    for (CalCalendar *aCalendar in sharedStore.calendars) {
-        if ([aCalendar.title isEqualToString:@"Reminders"]) {
-            [newTask setCalendar:aCalendar];
-            break;
-        }
-    }
-    
+
     NSError *error = nil;
-    if (![sharedStore saveTask:newTask error:&error]) {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Error while adding reminder" defaultButton:@"Dismiss" alternateButton:nil otherButton:nil informativeTextWithFormat:[NSString stringWithFormat:@"Please report this error to help me fix it: %@", error.localizedDescription]];
-        [alert runModal];
+    if (![anEventStore saveReminder:aReminder commit:YES error:&error]) {
+        NSLog(@"%@", error.localizedDescription);
     } else {
         [self.inputField setStringValue:@""];
-        [self.outputField setStringValue:@"Added to Reminders"];   
+        [self.outputField setStringValue:@"Added to Reminders"];
+        _reminderDate = nil;
+        _reminderTitle = nil;
+        _priority = nil;
     }
 }
-
-- (void)textEditingChanged:(id)sender {
-    NSLog(@"Text editing changed");
-}
-
-
-
 
 @end

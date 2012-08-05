@@ -20,5 +20,5 @@
 @property (strong, nonatomic) IBOutlet NSMatrix *alarmMatrix;
 
 - (IBAction)touchAdd:(id)sender;
-- (IBAction)textEditingChanged:(id)sender;
+
 @end
