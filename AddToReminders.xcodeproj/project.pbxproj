@@ -8,18 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		593C4BBE15BC906E006DF520 /* AddToReminders.icns in Resources */ = {isa = PBXBuildFile; fileRef = 593C4BBD15BC906E006DF520 /* AddToReminders.icns */; };
+		59B9D73515C857F70063982D /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B9D73415C857F70063982D /* EventKit.framework */; };
 		59D1776015BBF09400B4C880 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D1775F15BBF09400B4C880 /* Cocoa.framework */; };
 		59D1776A15BBF09400B4C880 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59D1776815BBF09400B4C880 /* InfoPlist.strings */; };
 		59D1776C15BBF09400B4C880 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D1776B15BBF09400B4C880 /* main.m */; };
 		59D1777015BBF09400B4C880 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59D1776E15BBF09400B4C880 /* Credits.rtf */; };
 		59D1777315BBF09400B4C880 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D1777215BBF09400B4C880 /* AppDelegate.m */; };
 		59D1777615BBF09400B4C880 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59D1777415BBF09400B4C880 /* MainMenu.xib */; };
-		59D1777D15BBF0B200B4C880 /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D1777C15BBF0B200B4C880 /* CalendarStore.framework */; };
 		59D1778015BBF1C300B4C880 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D1777F15BBF1C300B4C880 /* RootController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		593C4BBD15BC906E006DF520 /* AddToReminders.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AddToReminders.icns; sourceTree = "<group>"; };
+		59B9D73415C857F70063982D /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		59D1775B15BBF09400B4C880 /* AddToReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AddToReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D1775F15BBF09400B4C880 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		59D1776215BBF09400B4C880 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -43,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59D1777D15BBF0B200B4C880 /* CalendarStore.framework in Frameworks */,
+				59B9D73515C857F70063982D /* EventKit.framework in Frameworks */,
 				59D1776015BBF09400B4C880 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +55,7 @@
 		59D1775015BBF09400B4C880 = {
 			isa = PBXGroup;
 			children = (
+				59B9D73415C857F70063982D /* EventKit.framework */,
 				593C4BBD15BC906E006DF520 /* AddToReminders.icns */,
 				59D1777C15BBF0B200B4C880 /* CalendarStore.framework */,
 				59D1776515BBF09400B4C880 /* AddToReminders */,
@@ -267,7 +269,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AddToReminders/AddToReminders-Prefix.pch";
 				INFOPLIST_FILE = "AddToReminders/AddToReminders-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -279,7 +281,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AddToReminders/AddToReminders-Prefix.pch";
 				INFOPLIST_FILE = "AddToReminders/AddToReminders-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
