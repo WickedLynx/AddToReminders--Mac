@@ -1,18 +1,18 @@
 AddToReminders
 ===================
 
-##Introduction
+## Introduction
 
 _AddToReminders_ allows you to add Reminders to iCal using natural language. New tasks are added to the Reminders list in iCal. With iCloud sync, they will be accessible on your iOS device and using the iCloud web interface.
 
-##Features
+## Features
 
 1.  Add tasks to the Reminders calendar in iCal
 2.  Set due date
 3.  Set priority
 4.  Set an alarm for the task
 
-##Usage
+## Usage
 
 The App has only one text input field and a few buttons.
 
@@ -26,7 +26,7 @@ Basic syntax is as follows:
 
 `Reminder title <space> <@optional date and time> <space> <optional priority using !>`
 
-###Example
+### Example
 
 `Rearrange documents @today 15:30 !!!`
 
@@ -36,7 +36,7 @@ If the date info using `@` is not provided, no due date will be assigned to the 
 
 Also note that rigorous checking of characters is not performed and the App as such is not fool proof. 
 
-##System Requirements
+## System Requirements
 
 1.  An Intel Mac with OS X 10.7.2+
 2.  A Reminders calendar in iCal (it is in there by default)
